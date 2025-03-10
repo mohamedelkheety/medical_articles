@@ -67,7 +67,7 @@ class _ArticlesViewBodyState extends State<ArticlesViewBody> {
           children: [
             SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Padding(
+                 child: Padding(
                 padding: const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
                 child: Column(
                   spacing: 5,
