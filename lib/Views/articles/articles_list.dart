@@ -54,7 +54,7 @@ class ArticlesList extends StatelessWidget {
               trailing: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: Image.asset(
-                  'assets/images/articles/ghoda.webp',
+                  'assets/images/articles/الصحة النفسية.webp',
                   fit: BoxFit.cover,
                 ),
               ),

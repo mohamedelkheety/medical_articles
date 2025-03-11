@@ -4,65 +4,66 @@ class AqsamList{
 static List<AqsamModel> aqsamList = [
 AqsamModel(
   title: "الجهاز التنفسي",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الجهاز التنفسي.webp",
 ),AqsamModel(
   title: "أمراض الدم",
-  imagePath: "assets/imagePaths/quran.png",
-),AqsamModel(
-  title: "الغدد الصماء",
-  imagePath: "assets/imagePaths/quran.png",
-),AqsamModel(
+  imagePath: "assets/images/articles/أمراض الدم.webp",
+),
+    AqsamModel(
+      title: "البشرة والجمال",
+      imagePath: "assets/images/articles/البشرة.webp",
+    ),
+
+
+AqsamModel(
   title: "ارتفاع ضغط الدم",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الضغط.webp",
 ),AqsamModel(
   title: "جراحة العظام",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/العظام.webp",
 ),AqsamModel(
   title: "الجراحة العامة",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الجراحة.webp",
 ),AqsamModel(
-  title: "الأورام الخبيثة والحميدة",
-  imagePath: "assets/imagePaths/quran.png",
+  title: "الأورام",
+  imagePath: "assets/images/articles/الأورام.webp",
 ),AqsamModel(
   title: "الأمراض الجلدية",
-  imagePath: "assets/imagePaths/quran.png",
-),AqsamModel(
-  title: "الأمراض الجنسية",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/جلدية.webp",
 ),AqsamModel(
   title: "العقم",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/العقم.webp",
 ),AqsamModel(
   title: "الحساسية",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الحساسية.webp",
 ),AqsamModel(
   title: "أمراض الأطفال",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الأطفال.webp",
 ),AqsamModel(
   title: "الأمراض النفسية",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الصحة النفسية.webp",
 ),AqsamModel(
   title: "الأمراض العصبية",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/العصبية.webp",
 ),AqsamModel(
   title: "أنف وأذن وحنجرة",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/أنف وأذن.webp",
 ),AqsamModel(
   title: "الحمل والولادة",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/الحمل والولادة.webp",
 ),AqsamModel(
   title: "المسالك البولية",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/المسالك.webp",
 ),AqsamModel(
   title: "أمراض العيون",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/العيون.webp",
 ),AqsamModel(
   title: "اسعافات أولية",
-  imagePath: "assets/imagePaths/quran.png",
+  imagePath: "assets/images/articles/اسعافات.webp",
 ),AqsamModel(
-  title: "البشرة والجمال",
-  imagePath: "assets/imagePaths/quran.png",
-),
+  title: "الغدد الصماء",
+  imagePath: "assets/images/articles/ghoda.webp",
+)
 
 
 
