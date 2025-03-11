@@ -3,7 +3,6 @@ import 'package:medical_articles/Views/articles/articles_view_body.dart';
 import 'package:medical_articles/Views/home/home_page.dart';
 import 'package:medical_articles/Views/home/widgets/home_category.dart';
 import 'package:medical_articles/data/articles.lists.dart';
-import 'package:medical_articles/helper/media_query_size.dart';
 
 class TrindingListViewH extends StatelessWidget {
   const TrindingListViewH({super.key});

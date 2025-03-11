@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medical_articles/Views/articles/articles_list.dart';
-import 'package:medical_articles/Views/home/home_page.dart';
 import 'package:medical_articles/Views/home/widgets/home_category.dart';
 import 'package:medical_articles/data/aqsam_list.dart';
 import 'package:medical_articles/helper/media_query_size.dart';

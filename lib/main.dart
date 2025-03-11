@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_articles/Views/splashView/splash_view.dart';
 import 'package:medical_articles/business%20Logic/app_theme_cubit.dart';
 import 'package:medical_articles/business%20Logic/app_theme_state.dart';
-import 'package:medical_articles/data/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {

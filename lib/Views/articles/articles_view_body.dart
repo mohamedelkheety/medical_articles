@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medical_articles/Views/home/home_page.dart';
-import 'package:medical_articles/helper/media_query_size.dart';
 import 'package:medical_articles/models/articles_model.dart';
 
 class ArticlesViewBody extends StatefulWidget {
