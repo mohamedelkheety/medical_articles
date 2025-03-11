@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_articles/Views/articles/articles_list.dart';
 import 'package:medical_articles/Views/home/home_page.dart';
 import 'package:medical_articles/Views/home/widgets/home_category.dart';
+import 'package:medical_articles/data/aqsam_list.dart';
 import 'package:medical_articles/helper/media_query_size.dart';
 
 class AllArticlesList extends StatelessWidget {
@@ -11,9 +12,9 @@ class AllArticlesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
-      itemCount: 7,
+      itemCount: AqsamList.aqsamList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: MediaQuerySize.width(context) < 400 ? 2 : 3,
+        crossAxisCount: getCrossAxisCount(context),
       ),
       itemBuilder: (context, index) {
         return InkWell(
@@ -25,11 +26,27 @@ class AllArticlesList extends StatelessWidget {
           child: HomeCategory(
             paddingSize: 4,
             marginSize: 2,
-            text: 'الجهاز التنفسي',
-            assetName: 'assets/images/articles/ghoda.webp',
+            text: AqsamList.aqsamList[index].title,
+            assetName: AqsamList.aqsamList[index].imagePath,
           ),
         );
       },
     );
+  }
+
+  int getCrossAxisCount(BuildContext context) {
+    int itemCount;
+
+    if (MediaQuerySize.width(context) <= 400) {
+      itemCount = 2;
+      return itemCount;
+    } else if (MediaQuerySize.width(context) <= 600 &&
+        MediaQuerySize.width(context) >=400) {
+      itemCount = 3;
+      return itemCount;
+    } else {
+      itemCount = 4;
+      return itemCount;
+    }
   }
 }
