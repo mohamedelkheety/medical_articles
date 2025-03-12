@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:medical_articles/Views/home/home_page.dart';
+import 'package:medical_articles/Views/articles/article_screen_for_all.dart';
+import 'package:medical_articles/data/aqsam_list.dart';
+import 'package:medical_articles/data/articles.lists.dart';
+import 'package:medical_articles/helper/get_responsive_width.dart';
+import 'package:medical_articles/models/articles_model.dart';
 
 class ArticlesList extends StatelessWidget {
-  const ArticlesList({super.key});
+  const ArticlesList({
+    super.key,
+    required this.articlesListOfModel,
+    required this.index,
+  });
+  final List<ArticlesModel> articlesListOfModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -10,50 +20,65 @@ class ArticlesList extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Articles List',
+          AqsamList.aqsamList[index].title,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-             fontSize: getResponsiveWidth(
+            fontSize: getResponsiveWidth(
               context,
-              mobileWidth: 0.06,
+              mobileWidth: 0.05,
               tabletWidth: 22,
-            ), ),
+            ),
+          ),
         ),
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: ArticlesLists.allArticlesList[index].length,
         itemBuilder: (context, index) {
           return Directionality(
             textDirection: TextDirection.rtl,
             child: ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ArticleScreenViewForAllArticles(
+                        articlesList: articlesListOfModel,
+                        index: index,
+                      );
+                    },
+                  ),
+                );
+              },
               contentPadding: EdgeInsets.symmetric(horizontal: 6),
               title: Text(
-                ' خروج دم مع البلغم: الأسباب وكيفية علاجه',
+                articlesListOfModel[index].title,
                 style: TextStyle(
                   overflow: TextOverflow.ellipsis,
-                    fontSize: getResponsiveWidth(
+                  fontSize: getResponsiveWidth(
                     context,
                     mobileWidth: 0.05,
                     tabletWidth: 18,
-                  ), ),
+                  ),
+                ),
               ),
               subtitle: Text(
-                'علامات الربو غير المسيطر عليه منها:البلغم الاخضر والعال الديكي',
+                articlesListOfModel[index].content,
                 style: TextStyle(
                   overflow: TextOverflow.ellipsis,
 
-                   fontSize: getResponsiveWidth(
+                  fontSize: getResponsiveWidth(
                     context,
                     mobileWidth: 0.04,
                     tabletWidth: 16,
-                  ), color: Colors.grey.shade500,
+                  ),
+                  color: Colors.grey.shade500,
                 ),
               ),
 
               trailing: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: Image.asset(
-                  'assets/images/articles/الصحة النفسية.webp',
+                  articlesListOfModel[index].image,
                   fit: BoxFit.cover,
                 ),
               ),

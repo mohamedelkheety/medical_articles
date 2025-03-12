@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:medical_articles/helper/get_responsive_width.dart';
 import 'package:medical_articles/models/articles_model.dart';
 
-class ArticlesViewBody extends StatefulWidget {
-  const ArticlesViewBody({super.key, required this.articlesModel});
-  final ArticlesModel articlesModel;
+class ArticleScreenViewForAllArticles extends StatefulWidget {
+  const ArticleScreenViewForAllArticles({super.key, required this.articlesList, required this.index});
+  final List <ArticlesModel> articlesList;
+  final int index;
 
   @override
-  State<ArticlesViewBody> createState() => _ArticlesViewBodyState();
+  State<ArticleScreenViewForAllArticles> createState() => _AllArticlesViewBodyState();
 }
 
-class _ArticlesViewBodyState extends State<ArticlesViewBody> {
+class _AllArticlesViewBodyState extends State<ArticleScreenViewForAllArticles> {
   // BannerAd? bannerAd;
   // bool isLoaded = false;
   // void loadAd() async {
@@ -66,7 +67,7 @@ class _ArticlesViewBodyState extends State<ArticlesViewBody> {
           children: [
             SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-                 child: Padding(
+              child: Padding(
                 padding: const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
                 child: Column(
                   spacing: 5,
@@ -74,7 +75,7 @@ class _ArticlesViewBodyState extends State<ArticlesViewBody> {
                   children: [
                     Text(
                       textDirection: TextDirection.rtl,
-                      widget.articlesModel.title,
+                      widget.articlesList[widget.index].title,
                       style: TextStyle(
                         fontSize: getResponsiveWidth(
                           context,
@@ -85,10 +86,10 @@ class _ArticlesViewBodyState extends State<ArticlesViewBody> {
                     ),
                     // if (isLoaded && bannerAd != null)
                     //   BannerContainer(bannerAd: bannerAd),
-                    Image.asset(widget.articlesModel.image),
+                    Image.asset(widget.articlesList[widget.index].image),
                     SelectableText(
                       textAlign: TextAlign.justify,
-                      widget.articlesModel.content,
+                      widget.articlesList[widget.index].content,
                       style: TextStyle(
                         fontSize: getResponsiveWidth(
                           context,

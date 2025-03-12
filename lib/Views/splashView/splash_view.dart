@@ -13,7 +13,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       if (mounted) {
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
@@ -32,8 +32,8 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          'assets/images/logo.png',
-          height: MediaQuerySize.height(context) * 0.42,
+          'assets/images/luncher_icon.png',
+          height: MediaQuerySize.height(context) * 0.28,
         ),
       ),
     );

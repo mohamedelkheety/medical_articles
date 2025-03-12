@@ -10,7 +10,7 @@ AqsamModel(
   imagePath: "assets/images/articles/أمراض الدم.webp",
 ),
     AqsamModel(
-      title: "البشرة والجمال",
+      title: "البشرة والشَعر",
       imagePath: "assets/images/articles/البشرة.webp",
     ),
 

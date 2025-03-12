@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_articles/Views/articles/articles_list.dart';
 import 'package:medical_articles/Views/home/widgets/home_category.dart';
 import 'package:medical_articles/data/aqsam_list.dart';
+import 'package:medical_articles/data/articles.lists.dart';
 import 'package:medical_articles/helper/media_query_size.dart';
 
 class AllArticlesList extends StatelessWidget {
@@ -18,9 +19,15 @@ class AllArticlesList extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.of(
-              context,
-            ).push(MaterialPageRoute(builder: (context) => ArticlesList()));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder:
+                    (context) => ArticlesList(
+                      index: index,
+                      articlesListOfModel: ArticlesLists.allArticlesList[index],
+                    ),
+              ),
+            );
           },
           child: HomeCategory(
             paddingSize: 4,
@@ -40,7 +47,7 @@ class AllArticlesList extends StatelessWidget {
       itemCount = 2;
       return itemCount;
     } else if (MediaQuerySize.width(context) <= 600 &&
-        MediaQuerySize.width(context) >=400) {
+        MediaQuerySize.width(context) >= 400) {
       itemCount = 3;
       return itemCount;
     } else {

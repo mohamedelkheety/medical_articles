@@ -27,7 +27,7 @@ class Developer extends StatelessWidget {
           SizedBox(height: size * 0.15),
           CircleAvatar(
             radius: size * 0.13,
-            backgroundImage: const AssetImage('assets/images/logo.png'),
+            backgroundImage: const AssetImage('assets/images/me.jpg'),
           ),
           const SizedBox(height: 25),
           customText(

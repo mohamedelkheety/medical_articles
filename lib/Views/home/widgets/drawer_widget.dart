@@ -3,20 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_articles/Views/about_us/developer.dart';
 import 'package:medical_articles/Views/home/home_page.dart';
 import 'package:medical_articles/business%20Logic/app_theme_cubit.dart';
-import 'package:medical_articles/business%20Logic/app_theme_state.dart';
+import 'package:medical_articles/helper/get_responsive_width.dart';
 import 'package:medical_articles/helper/media_query_size.dart';
-import 'package:medical_articles/models/enums.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: MediaQuerySize.width(context) * 0.6,
+      width: getResponsiveWidth(context, mobileWidth: 0.6, tabletWidth: 250),
       child: ListView(
         children: [
-          DrawerHeader(child: Image.asset('assets/images/luncher_icon.png')),
+          DrawerHeader(
+            child: Image.asset(
+              'assets/images/luncher_icon.png',
+              height: MediaQuerySize.width(context) * .045,
+            ),
+          ),
           ListTile(
             title: Text('Home', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.home),
@@ -32,11 +35,7 @@ class DrawerWidget extends StatelessWidget {
             title: Text('Theme', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.light_mode),
             onTap: () {
-              BlocProvider.of<AppThemeCubit>(context).changeTheme(
-                BlocProvider.of<AppThemeCubit>(context).state is AppDarkTheme
-                    ? ThemeState.light
-                    : ThemeState.dark,
-              );
+              BlocProvider.of<AppThemeCubit>(context).changeTheme();
               Navigator.of(context).pop();
             },
           ),

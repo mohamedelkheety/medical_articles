@@ -9,6 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppThemeCubit.sharedPreferences = await SharedPreferences.getInstance();
+   
+  AppThemeCubit appThemeCubit = AppThemeCubit();
+  await appThemeCubit.loadTheme();
   runApp(const MyApp());
 }
 
@@ -18,15 +21,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppThemeCubit(),
+      create: (context) {
+AppThemeCubit cubit = AppThemeCubit();
+        cubit.loadTheme();
+
+        return cubit;
+      } ,
+        
       child: BlocBuilder<AppThemeCubit, AppThemeState>(
         builder: (context, state) {
-          if (state is AppDarkTheme) {
-            return CustomMaterialApp(theme: ThemeData.dark());
-          } else if (state is AppLightTheme) {
-            return CustomMaterialApp(theme: ThemeData.light());
-          }
-          return CustomMaterialApp(theme: ThemeData.light());
+         
+          return CustomMaterialApp(theme:  state is AppDarkTheme ? ThemeData.dark() : ThemeData.light(),
+          );
         },
       ),
     );

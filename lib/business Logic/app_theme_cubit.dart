@@ -1,30 +1,32 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:medical_articles/business%20Logic/app_theme_state.dart';
-import 'package:medical_articles/models/enums.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppThemeCubit extends Cubit<AppThemeState> {
-  AppThemeCubit() : super(AppInitialTheme());
+  AppThemeCubit() : super(AppLightTheme());
   static SharedPreferences? sharedPreferences;
-  void changeTheme(ThemeState? themState) {
-    try {
-      switch (themState!) {
-        case ThemeState.initial:
-          break;
+   Future<void> loadTheme() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    String? theme = sharedPreferences!.getString('theme');
 
-        case ThemeState.light:
-          sharedPreferences!.setString('theme', 'light');
-          emit(AppLightTheme());
-          break;
-        case ThemeState.dark:
-          sharedPreferences!.setString('theme', 'drak');
-
-          emit(AppDarkTheme());
-          break;
-      }
-    } catch (e) {
-      debugPrint('Error in changeTheme $e');
+    if (theme == 'dark') {
+      emit(AppDarkTheme());
+    } else {
+      emit(AppLightTheme());
+    }
+  }
+  
+   
+       void changeTheme() {
+    if (state is AppDarkTheme) {
+      sharedPreferences?.setString('theme', 'light');
+      emit(AppLightTheme());
+    } else {
+      sharedPreferences?.setString('theme', 'dark');
+      emit(AppDarkTheme());
     }
   }
 }
+   
+  
+
