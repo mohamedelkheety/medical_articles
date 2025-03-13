@@ -86,7 +86,7 @@ class _AllArticlesViewBodyState extends State<ArticleScreenViewForAllArticles> {
                     ),
                     // if (isLoaded && bannerAd != null)
                     //   BannerContainer(bannerAd: bannerAd),
-                    Image.asset(widget.articlesList[widget.index].image),
+                    // Image.asset(widget.articlesList[widget.index].image),
                     SelectableText(
                       textAlign: TextAlign.justify,
                       widget.articlesList[widget.index].content,

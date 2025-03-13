@@ -75,13 +75,13 @@ class ArticlesList extends StatelessWidget {
                 ),
               ),
 
-              trailing: ClipRRect(
-                borderRadius: BorderRadius.circular(6),
-                child: Image.asset(
-                  articlesListOfModel[index].image,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              // trailing: ClipRRect(
+              //   borderRadius: BorderRadius.circular(6),
+              //   child: Image.asset(
+              //     articlesListOfModel[index].image,
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
             ),
           );
         },

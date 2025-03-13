@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:medical_articles/Views/splashView/splash_view.dart';
 import 'package:medical_articles/business%20Logic/app_theme_cubit.dart';
 import 'package:medical_articles/business%20Logic/app_theme_state.dart';
@@ -8,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   AppThemeCubit.sharedPreferences = await SharedPreferences.getInstance();
    
   AppThemeCubit appThemeCubit = AppThemeCubit();

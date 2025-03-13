@@ -11,52 +11,7 @@ class ArticlesViewBody extends StatefulWidget {
 }
 
 class _ArticlesViewBodyState extends State<ArticlesViewBody> {
-  // BannerAd? bannerAd;
-  // bool isLoaded = false;
-  // void loadAd() async {
-  //   final size = await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-  //     MediaQuery.of(context).size.width.truncate(),
-  //   );
-  //   if (size == null) {
-  //     debugPrint("custom size not found");
-  //     return;
-  //   }
-  //   bannerAd = BannerAd(
-  //     adUnitId: AdManager.bannerId,
-  //     request: const AdRequest(),
-  //     size: size,
-  //     listener: BannerAdListener(
-  //       onAdLoaded: (ad) {
-  //         debugPrint('$ad Loooooaded ');
-  //         setState(() {
-  //           isLoaded = true;
-  //         });
-  //       },
-  //       onAdFailedToLoad: (ad, err) {
-  //         debugPrint('//////////BannerAd failed to load: $err');
-  //         ad.dispose();
-  //       },
-  //     ),
-  //   )..load();
-  // }
 
-  // // @override
-  // // void initState() {
-  // //   loadAd();
-  // //   super.initState();
-  // // }
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   loadAd(); // After build context
-  // }
-
-  // @override
-  // void dispose() {
-  //   bannerAd?.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
