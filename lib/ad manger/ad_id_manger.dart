@@ -1,5 +1,5 @@
 class AdIdManger {
-  static bool isTest = true;
+  static bool isTest = false;
   static String bannerId =
       isTest
            ?
