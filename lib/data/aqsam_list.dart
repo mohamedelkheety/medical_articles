@@ -39,31 +39,28 @@ AqsamModel(
 ),AqsamModel(
   title: "أمراض الأطفال",
   imagePath: "assets/images/articles/الأطفال.webp",
-),AqsamModel(
-  title: "الأمراض النفسية",
-  imagePath: "assets/images/articles/الصحة النفسية.webp",
-),AqsamModel(
-  title: "الأمراض العصبية",
-  imagePath: "assets/images/articles/العصبية.webp",
-),AqsamModel(
-  title: "أنف وأذن وحنجرة",
-  imagePath: "assets/images/articles/أنف وأذن.webp",
-),AqsamModel(
-  title: "الحمل والولادة",
-  imagePath: "assets/images/articles/الحمل والولادة.webp",
-),AqsamModel(
-  title: "المسالك البولية",
-  imagePath: "assets/images/articles/المسالك.webp",
-),AqsamModel(
-  title: "أمراض العيون",
-  imagePath: "assets/images/articles/العيون.webp",
-),AqsamModel(
-  title: "اسعافات أولية",
-  imagePath: "assets/images/articles/اسعافات.webp",
-),AqsamModel(
-  title: "الغدد الصماء",
-  imagePath: "assets/images/articles/ghoda.webp",
-)
+),
+
+
+// AqsamModel(
+//   title: "الأمراض النفسية",
+//   imagePath: "assets/images/articles/الصحة النفسية.webp",
+// ),AqsamModel(
+//   title: "الأمراض العصبية",
+//   imagePath: "assets/images/articles/العصبية.webp",
+// ),AqsamModel(
+//   title: "أنف وأذن وحنجرة",
+//   imagePath: "assets/images/articles/أنف وأذن.webp",
+// ),AqsamModel(
+//   title: "الحمل والولادة",
+//   imagePath: "assets/images/articles/الحمل والولادة.webp",
+// ),AqsamModel(
+//   title: "أمراض العيون",
+//   imagePath: "assets/images/articles/العيون.webp",
+// ),AqsamModel(
+//   title: "اسعافات أولية",
+//   imagePath: "assets/images/articles/اسعافات.webp",
+// )
 
 
 

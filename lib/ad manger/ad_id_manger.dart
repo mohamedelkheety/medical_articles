@@ -2,7 +2,10 @@ class AdIdManger {
   static bool isTest = true;
   static String bannerId =
       isTest
-          ? '/21775744923/example/adaptive-banner'
+           ?
+          //  "ca-app-pub-3940256099942544/6300978111"
+            "ca-app-pub-3940256099942544/9214589741" 
+        //  '/21775744923/example/adaptive-banner'
           : "ca-app-pub-6373031995644201/6843975486";
   static String interstitialId =
       isTest

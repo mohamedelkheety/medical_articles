@@ -1,63 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:medical_articles/ad%20manger/ad_id_manger.dart';
+import 'package:medical_articles/helper/banner_container.dart';
 import 'package:medical_articles/helper/get_responsive_width.dart';
 import 'package:medical_articles/models/articles_model.dart';
 
 class ArticleScreenViewForAllArticles extends StatefulWidget {
-  const ArticleScreenViewForAllArticles({super.key, required this.articlesList, required this.index});
-  final List <ArticlesModel> articlesList;
+  const ArticleScreenViewForAllArticles({
+    super.key,
+    required this.articlesList,
+    required this.index,
+  });
+  final List<ArticlesModel> articlesList;
   final int index;
-
   @override
-  State<ArticleScreenViewForAllArticles> createState() => _AllArticlesViewBodyState();
+  State<ArticleScreenViewForAllArticles> createState() =>
+      _AllArticlesViewBodyState();
 }
 
 class _AllArticlesViewBodyState extends State<ArticleScreenViewForAllArticles> {
-  // BannerAd? bannerAd;
-  // bool isLoaded = false;
-  // void loadAd() async {
-  //   final size = await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-  //     MediaQuery.of(context).size.width.truncate(),
-  //   );
-  //   if (size == null) {
-  //     debugPrint("custom size not found");
-  //     return;
-  //   }
-  //   bannerAd = BannerAd(
-  //     adUnitId: AdManager.bannerId,
-  //     request: const AdRequest(),
-  //     size: size,
-  //     listener: BannerAdListener(
-  //       onAdLoaded: (ad) {
-  //         debugPrint('$ad Loooooaded ');
-  //         setState(() {
-  //           isLoaded = true;
-  //         });
-  //       },
-  //       onAdFailedToLoad: (ad, err) {
-  //         debugPrint('//////////BannerAd failed to load: $err');
-  //         ad.dispose();
-  //       },
-  //     ),
-  //   )..load();
-  // }
+  BannerAd? bannerAd;
+  bool isLoaded = false;
+  void loadAd() async {
+    final size = await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+      MediaQuery.of(context).size.width.truncate(),
+    );
+    if (size == null) {
+      debugPrint("custom size not found");
+      return;
+    }
 
-  // // @override
-  // // void initState() {
-  // //   loadAd();
-  // //   super.initState();
-  // // }
+    bannerAd = BannerAd(
+      adUnitId: AdIdManger.bannerId,
+      request: const AdRequest(),
+      size: size,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          debugPrint('$ad Loooooaded ');
+          setState(() {
+            isLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          debugPrint('//////////BannerAd failed to load*************: $err');
+          ad.dispose();
+        },
+      ),
+    )..load();
+  }
 
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   loadAd(); // After build context
-  // }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    loadAd(); // After build context
+  }
 
-  // @override
-  // void dispose() {
-  //   bannerAd?.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    bannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +86,7 @@ class _AllArticlesViewBodyState extends State<ArticleScreenViewForAllArticles> {
                         ),
                       ),
                     ),
-                    // if (isLoaded && bannerAd != null)
-                    //   BannerContainer(bannerAd: bannerAd),
+
                     // Image.asset(widget.articlesList[widget.index].image),
                     SelectableText(
                       textAlign: TextAlign.justify,
@@ -112,6 +113,11 @@ class _AllArticlesViewBodyState extends State<ArticleScreenViewForAllArticles> {
                 child: Icon(Icons.arrow_back_ios),
               ),
             ),
+
+            if (isLoaded && bannerAd != null)
+              BannerContainer(bannerAd: bannerAd)
+            else
+              SizedBox(),
           ],
         ),
       ),
