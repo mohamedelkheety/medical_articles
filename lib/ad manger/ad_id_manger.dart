@@ -1,3 +1,5 @@
+//I know this is sensitive data I'm leaving public for evaluation.
+
 class AdIdManger {
   static bool isTest = true;
   static String bannerId =
