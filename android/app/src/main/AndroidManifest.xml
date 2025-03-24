@@ -4,7 +4,7 @@
 
     
     <application
-        android:label="medical_articles"
+        android:label="Medical Articles"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
