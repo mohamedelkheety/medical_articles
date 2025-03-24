@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:medical_articles/ad%20manger/ad_id_manger.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_articles/business%20Logic/ad%20cubit/ad_cubit.dart';
 import 'package:medical_articles/helper/banner_container.dart';
+import 'package:medical_articles/helper/custom_arrow_back.dart';
 import 'package:medical_articles/helper/get_responsive_width.dart';
 import 'package:medical_articles/models/articles_model.dart';
 
-class ArticleScreenViewForAllArticles extends StatefulWidget {
+class ArticleScreenViewForAllArticles extends StatelessWidget {
   const ArticleScreenViewForAllArticles({
     super.key,
     required this.articlesList,
@@ -14,112 +15,62 @@ class ArticleScreenViewForAllArticles extends StatefulWidget {
   final List<ArticlesModel> articlesList;
   final int index;
   @override
-  State<ArticleScreenViewForAllArticles> createState() =>
-      _AllArticlesViewBodyState();
-}
-
-class _AllArticlesViewBodyState extends State<ArticleScreenViewForAllArticles> {
-  BannerAd? bannerAd;
-  bool isLoaded = false;
-  void loadAd() async {
-    final size = await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-      MediaQuery.of(context).size.width.truncate(),
-    );
-    if (size == null) {
-      debugPrint("custom size not found");
-      return;
-    }
-
-    bannerAd = BannerAd(
-      adUnitId: AdIdManger.bannerId,
-      request: const AdRequest(),
-      size: size,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          debugPrint('$ad Loooooaded ');
-          setState(() {
-            isLoaded = true;
-          });
-        },
-        onAdFailedToLoad: (ad, err) {
-          debugPrint('//////////BannerAd failed to load*************: $err');
-          ad.dispose();
-        },
-      ),
-    )..load();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    loadAd(); // After build context
-  }
-
-  @override
-  void dispose() {
-    bannerAd?.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    context.read<AdCubit>().loadBannerAd(context: context);
+
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
-                child: Column(
-                  spacing: 5,
-                  textDirection: TextDirection.rtl,
-                  children: [
-                    Text(
-                      textDirection: TextDirection.rtl,
-                      widget.articlesList[widget.index].title,
-                      style: TextStyle(
-                        fontSize: getResponsiveWidth(
-                          context,
-                          mobileWidth: 0.06,
-                          tabletWidth: 22,
+      body: BlocBuilder<AdCubit, AdState>(
+        builder: (context, state) {
+          return SafeArea(
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    right: 8.0,
+                    left: 8,
+                    bottom: 8,
+                  ),
+                  child: ListView(
+                    children: [
+                      Text(
+                        textDirection: TextDirection.rtl,
+                        articlesList[index].title,
+                        style: TextStyle(
+                          fontSize: getResponsiveWidth(
+                            context,
+                            mobileWidth: 0.06,
+                            tabletWidth: 22,
+                          ),
                         ),
                       ),
-                    ),
 
-                    // Image.asset(widget.articlesList[widget.index].image),
-                    SelectableText(
-                      textAlign: TextAlign.justify,
-                      widget.articlesList[widget.index].content,
-                      style: TextStyle(
-                        fontSize: getResponsiveWidth(
-                          context,
-                          mobileWidth: 0.055,
-                          tabletWidth: 20,
+                      // Image.asset(widget.articlesList[widget.index].image),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: SelectableText(
+                          textAlign: TextAlign.justify,
+                          articlesList[index].content,
+                          style: TextStyle(
+                            fontSize: getResponsiveWidth(
+                              context,
+                              mobileWidth: 0.055,
+                              tabletWidth: 20,
+                            ),
+                          ),
+                          textDirection: TextDirection.rtl,
                         ),
                       ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                child: Icon(Icons.arrow_back_ios),
-              ),
-            ),
+                                CustomArrowBack(),
 
-            if (isLoaded && bannerAd != null)
-              BannerContainer(bannerAd: bannerAd)
-            else
-              SizedBox(),
-          ],
-        ),
+                if (state is BannerAdLoaded && state.bannerAd != null)
+                  BannerContainer(bannerAd: state.bannerAd),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

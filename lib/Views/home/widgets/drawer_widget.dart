@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_articles/Views/about_us/developer.dart';
 import 'package:medical_articles/Views/home/home_page.dart';
-import 'package:medical_articles/business%20Logic/app_theme_cubit.dart';
+import 'package:medical_articles/business%20Logic/app%20theme%20cubit/app_theme_cubit.dart';
 import 'package:medical_articles/helper/get_responsive_width.dart';
 import 'package:medical_articles/helper/media_query_size.dart';
 
